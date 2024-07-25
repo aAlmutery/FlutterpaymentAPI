@@ -15,7 +15,7 @@ class PaymentController extends GetxController {
   TextEditingController cardCode = TextEditingController();
 
   Future<void> savePayment(context) async {
-    // isSaveing(true);
+    isSaveing(true);
     final Xml2Json xml2json = Xml2Json();
 
     const headers = {
@@ -55,8 +55,6 @@ class PaymentController extends GetxController {
       var responseMessage = responseData['CC5Response']['Response']['\$t'];
       var responseErrorMessage = responseData['CC5Response']['ErrMsg']['\$t'];
 
-      print(responseErrorMessage);
-
       if (responseCode.toString() == '00') {
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(
@@ -90,6 +88,6 @@ class PaymentController extends GetxController {
       }
     }
 
-    // isSaveing(false);
+    isSaveing(false);
   }
 }
